@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html> 
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular Chess</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+
+<body class="unselectable" ng-app="chess" ng-controller="chessController" style="background:#ffffff">
+<center  >
+<div id="t">
+<div>
+	<br/><br/>
+	<span style="font-size:50px;color: #000000;background:#ffffff"><b>
+	<i ng-class="{'fa':true, 'fa-cog':true, 'fa-spin':turn===1}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{getTime('hours',0)}} : {{getTime('minutes',0)}} : {{getTime('seconds',0)}}</b></span>
+	<br/><br/>
+</div>
+<table  id="tt"  border="1px" style="font-size:50px;color: #000000;background:#000000">
+<tr ng-repeat="y in [0,1,2,3,4,5,6,7]" >
+
+	<td droppable drop="drop(x,y)" drop-event="dropEvent" style="width:75px;height:75px;"  ng-repeat="x in [0,1,2,3,4,5,6,7]" ng-style="{'background':(x+y)%2 == 0?'#FFD787':'#fffff0'}">
+		<center    >
+			<span draggable dragged="dragged(x,y)" end-drag="endDrag(x,y)" ng-bind-html="land[y][x].getType()"></span>
+		</center>			
+	</td>
+
+</tr>
+	
+</table>
+<div>
+	<br/><br/>
+	
+	<span style="font-size:50px;color: #000000;background:#ffffff"><b><i ng-class="{'fa':true, 'fa-cog':true, 'fa-spin':turn===2}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{getTime('hours',1)}} : {{getTime('minutes',1)}} : {{getTime('seconds',1)}}</b></span>
+	<br/><br/>
+</div>
+
+</div>
+</center>
+	<script type="text/javascript" src="js/dependencies/angular.min.js"></script> 
+	<script type="text/javascript" src="js/dependencies/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="js/controller/chessController.js"></script>
+	<script type="text/javascript" src="js/directives/main-directives.js"></script>
+
+</body>
+</html>
